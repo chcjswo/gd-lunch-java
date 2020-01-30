@@ -1,9 +1,7 @@
 package me.mocadev.lunch.model;
 
 import java.util.Date;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,9 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @date 2020-01-12
  */
 @Document(collection = "restaurants")
-@Getter
-@Setter
-@ToString
+@Data
 public class Restaurants {
 	@Id
 	private String _id;
