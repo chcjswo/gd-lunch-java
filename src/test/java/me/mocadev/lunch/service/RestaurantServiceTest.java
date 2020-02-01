@@ -1,9 +1,14 @@
 package me.mocadev.lunch.service;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasItem;
+import static org.junit.Assert.assertThat;
+
 import java.util.List;
 import java.util.Optional;
 import me.mocadev.lunch.model.Restaurants;
 import me.mocadev.lunch.repository.RestaurantRepository;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -22,30 +27,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest()
 class RestaurantServiceTest {
 
-    @Autowired
-    RestaurantService restaurantService;
+	@Autowired
+	RestaurantService restaurantService;
 
-    @Autowired
-    RestaurantRepository restaurantRepository;
+	@Autowired
+	RestaurantRepository restaurantRepository;
 
-    @BeforeEach
-    public void setUp() {
-//        restaurantService(restaurantRepository);
-//        MockitoAnnotations.initMocks(this);
-    }
+	@BeforeEach
+	public void setUp() {
+//		MockitoAnnotations.initMocks(this);
+	}
 
-    @Test
-    public void allTest() {
-        List<Restaurants> list = restaurantService.all();
-//        List<Restaurants> list = restaurantRepository.findAll();
-        System.out.println(list);
-    }
+	@Test
+	public void allTest() {
+		List<Restaurants> list = restaurantService.all();
+        assertThat(list,
+            hasItem(Matchers.<Restaurants>hasProperty("name", is("무극라멘"))));
+	}
 
-    @Test
-    public void restaurantTest() {
-//        List<Restaurants> list = restaurantService.all();
-        Optional<Restaurants> restaurant = restaurantRepository.findById("5cc5763d73b56400171349dc");
-        System.out.println(restaurant);
-    }
+	@Test
+	public void restaurantTest() {
+		Optional<Restaurants> restaurant = restaurantRepository.findById("5cc5763d73b56400171349dc");
+        assert restaurant.orElse(null) != null;
+        org.assertj.core.api.Assertions.assertThat(restaurant.orElse(null).getName()).isEqualTo("양파볶음밥");
+	}
 
 }
