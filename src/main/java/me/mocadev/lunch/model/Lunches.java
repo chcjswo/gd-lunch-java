@@ -1,6 +1,9 @@
 package me.mocadev.lunch.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -14,7 +17,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
  */
 
 @Document(collection = "Lunches")
-@Data
+@Getter
+@NoArgsConstructor
 public class Lunches {
     @Id
     private String _id;
@@ -26,5 +30,12 @@ public class Lunches {
     private String restaurantName;
 
     @Field("user_name")
-    private String user_name;
+    private String userName;
+
+    @Builder
+    public Lunches(String lunchDate, String restaurantName, String userName) {
+        this.lunchDate = lunchDate;
+        this.restaurantName = restaurantName;
+        this.userName = userName;
+    }
 }

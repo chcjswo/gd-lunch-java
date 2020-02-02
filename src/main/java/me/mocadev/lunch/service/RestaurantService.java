@@ -4,6 +4,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import me.mocadev.lunch.model.Restaurants;
 import me.mocadev.lunch.repository.RestaurantRepository;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
+
+    private final MongoTemplate mongoTemplate;
 
     public List<Restaurants> all() {
         return restaurantRepository.findAll();

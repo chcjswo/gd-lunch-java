@@ -1,4 +1,11 @@
 spring:
     data:
         mongodb:
-            uri:
+            host: ENC(5BHuenJmTnm09KG5mnqR+oJj03Eeq6PtPSu7ISIsuV8=)
+            port: 47446
+            database: ENC(F6pzi7nC7CS35N1qjwFbiw==)
+            username: ENC(NRZuZqS85VkwNPGqVuGv2A==)
+            password: ENC(w7o9AcEJDqYbXfAqNAyDVtrgp1ioJ2s0)
+jasypt:
+    encryptor:
+        bean: jasyptStringEncryptor
