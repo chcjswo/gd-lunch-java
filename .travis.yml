@@ -31,6 +31,17 @@ deploy:
       local_dir: deploy
       wait-until-deployed: true
 
+   - provider: codedeploy
+     access_key_id: $AWS_ACCESS_KEY
+     secret_access_key: $AWS_SECRET_KEY
+     bucket: gd-lunch
+     key: gd-lunch-api.zip
+     bundle_type: zip
+     application: gd-lunch-api
+     deployment_group: gd-lunch-api-group
+     region: ap-northeast-2
+     wait-until-deployed: true
+
 notifications:
     slack:
         secure: M7aTlEQwSHdTQt6HmOW6JaE6aFTKx6oe9WWprNySylAnTcQ3eRNNaw83ADEt5EZVRehJoICExi6soYyOd4o5qdQ4zuuuI4hiW1luJgxzoMQoTC9vFltpX/VVys+2BodpQvcorJ0vc4AnWJ2JneoFsbLMut6gLXuLFIjQGTaBiBcQWMRL7Dso63cRoRJcQ9ZMFGf0yd2zY0DFcOYN6Fl8ZdHHR9cohNyO857AT/lVEqipT0kiwS9PL8iU2BBACzgBgnxnhHnWbHc7DFbpgX8YUuiMKvlDl6Gtvtz9vJNz6Mloo2DBtwcJH3ENixBtzfhiRilD1sAi6H4xT8Vgmle519FW98y2quc5/9yC7CUi+m4OBISpQfHZpQ+YmW8UecVio7J5Zrg9QXyFaYEjt9G5y+TLo+IlBNm4M6ckGTlvo8vIE8bzP7XjcDaxafKdx681hhwNq3lp9cUkAD355i/ir+LrNjerfX5v1yxpEPAct8LC2Cpb7ebnBh2MI62fpuAtbmR3kd59xZRse5jsTn8wBuVJqZfeQ83D6vxzcQq8IHTEYAXiT2LVb7DFDKRJup97jjbOwbPtHpg8Sf9fPLq27mOClUnhc0dyc1UN7oPWe41upBgF5iIHwgx2cVUamddBd2mmSzg/UV/tz9OoO1lOtPKcPDbr6dHXa9lF9YAYsbg=
