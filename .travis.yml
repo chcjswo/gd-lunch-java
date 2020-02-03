@@ -21,26 +21,26 @@ before_deploy:
     - mv gd-lunch-api.zip deploy/gd-lunch-api.zip
 
 deploy:
-    - provider: s3
-      access_key_id: $AWS_ACCESS_KEY
-      secret_access_key: $AWS_SECRET_KEY
-      bucket: gd-lunch
-      region: ap-northeast-2
-      skip_cleanup: true
-      acl: private
-      local_dir: deploy
-      wait-until-deployed: true
+    -   provider: s3
+        access_key_id: $AWS_ACCESS_KEY
+        secret_access_key: $AWS_SECRET_KEY
+        bucket: gd-lunch
+        region: ap-northeast-2
+        skip_cleanup: true
+        acl: private
+        local_dir: deploy
+        wait-until-deployed: true
 
-   - provider: codedeploy
-     access_key_id: $AWS_ACCESS_KEY
-     secret_access_key: $AWS_SECRET_KEY
-     bucket: gd-lunch
-     key: gd-lunch-api.zip
-     bundle_type: zip
-     application: gd-lunch-api
-     deployment_group: gd-lunch-api-group
-     region: ap-northeast-2
-     wait-until-deployed: true
+    -   provider: codedeploy
+        access_key_id: $AWS_ACCESS_KEY
+        secret_access_key: $AWS_SECRET_KEY
+        bucket: gd-lunch
+        key: gd-lunch-api.zip
+        bundle_type: zip
+        application: gd-lunch-api
+        deployment_group: gd-lunch-api-group
+        region: ap-northeast-2
+        wait-until-deployed: true
 
 notifications:
     slack:
