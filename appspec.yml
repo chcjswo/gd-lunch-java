@@ -2,5 +2,5 @@ version: 0.0
 os: linux
 files:
     - source:  /
-      destination: /home/ec2-user/app/gd-lunch-api
+      destination: /home/ec2-user/app/gd-lunch-api/step2/zip
       overwrite: yes
