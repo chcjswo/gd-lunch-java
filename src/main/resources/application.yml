@@ -1,3 +1,6 @@
+server:
+    port: 80900
+
 spring:
     data:
         mongodb:
